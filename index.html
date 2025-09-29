@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ====================================================== -->
+    <!-- INSTRUCTIONS: Change the title to your personal message -->
+    <!-- ====================================================== -->
+    <title>A Message for Simar</title>
+    
+    <meta name="description" content="A special message for the one I can't imagine my life without." />
+    <meta property="og:title" content="A Message for Simar" />
+    <meta property="og:description" content="Just a little something for you." />
+    <meta property="og:type" content="website" />
+    <!-- INSTRUCTIONS: Replace placeholder with a real photo URL for social media sharing -->
+    <meta property="og:image" content="https://placehold.co/1200x630/e48a7b/fdf8f5?text=For+You" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General Setup & Design System --- */
+        :root {
+            --color-bg-start: #fdf8f5;
+            --color-bg-end: #f5eadd;
+            --color-text: #4a2e26;
+            --color-primary: #d17b6c;
+            --color-accent: #e48a7b;
+            --color-heading: #7c4a3f;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.8;
+            background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+            background-size: 400% 400%;
+            animation: gradientBG 25s ease infinite;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- Cover Page --- */
+        #cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 2rem;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+        
+        #cover h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-style: italic;
+            color: var(--color-heading);
+            font-weight: 400;
+        }
+
+        #open-letter-btn {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #open-letter-btn:hover {
+            transform: translateY(-5px);
+            background-color: var(--color-accent);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* --- Main Content --- */
+        main {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+        
+        main.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .section {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Typography --- */
+        h1, h2 {
+            font-family: var(--font-heading);
+            color: var(--color-heading);
+            font-weight: 700;
+        }
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 0.5rem; }
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+        }
+        p { font-size: 1.1rem; max-width: 650px; margin: 0 auto; }
+
+        /* --- Letter Section --- */
+        #typed-letter {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            min-height: 200px;
+            white-space: pre-wrap;
+            border-left: 5px solid var(--color-primary);
+        }
+        .typing-cursor { display: inline-block; width: 2px; height: 1.2em; background-color: var(--color-text); animation: blink 0.7s infinite; margin-left: 4px; position: relative; top: 4px; }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        /* --- Reasons Section --- */
+        .reasons-grid { display: grid; gap: 1.5rem; margin-top: 2rem; }
+        details {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.3s ease;
+            text-align: left;
+        }
+        details:hover { box-shadow: var(--shadow-hover); }
+        summary {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-heading);
+            padding: 1.5rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; font-size: 2rem; font-weight: 300; transition: transform 0.3s ease; }
+        details[open] summary::after { transform: rotate(45deg); }
+        .reason-content { padding: 0 1.5rem 1.5rem; border-top: 1px solid #eee; }
+
+        /* --- Gallery Section --- */
+        .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .photo-item { cursor: pointer; overflow: hidden; border-radius: 12px; box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .photo-item:hover { transform: scale(1.05); box-shadow: var(--shadow-hover); }
+        .photo-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        /* --- Photo Modal --- */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; z-index: 1000; }
+        .modal.open { opacity: 1; visibility: visible; }
+        .modal img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 5px; transform: scale(0.8); transition: transform 0.3s ease; }
+        .modal.open img { transform: scale(1); }
+        .modal-close { position: absolute; top: 20px; right: 30px; font-size: 3rem; color: white; cursor: pointer; line-height: 1; }
+        
+        /* --- Promise Section --- */
+        .promise-list { text-align: left; max-width: 500px; margin: 2rem auto 0; list-style: none; }
+        .promise-list li { margin-bottom: 1rem; padding-left: 2rem; position: relative; }
+        .promise-list li::before { content: '❤'; position: absolute; left: 0; color: var(--color-primary); }
+
+        /* --- Final Plea Section --- */
+        .heart { font-size: 3rem; color: var(--color-primary); animation: beat 1.5s infinite ease-in-out; display: block; margin-bottom: 1rem; }
+        @keyframes beat { 0%, 100% { transform: scale(1); } 10%, 30% { transform: scale(0.9); } 20%, 40% { transform: scale(1.1); } }
+
+        /* --- Audio Player --- */
+        #audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+        #audio-control:hover { transform: scale(1.1); }
+        #audio-control svg { width: 24px; height: 24px; color: var(--color-primary); }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================================================= -->
+    <!-- INSTRUCTIONS: Add a link to your special song in the `src` below.         -->
+    <!-- You can upload an mp3 file somewhere and paste the link here.             -->
+    <!-- Leave `src` blank if you don't want music.                                -->
+    <!-- ========================================================================= -->
+    <audio id="background-music" loop src=""></audio>
+    <button id="audio-control" aria-label="Play or pause music">
+        <!-- Play Icon -->
+        <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+        <!-- Pause Icon -->
+        <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+    </button>
+    
+    <div id="cover">
+        <h1>For Simar</h1>
+        <button id="open-letter-btn">Open The Letter</button>
+    </div>
+
+    <main id="main-content">
+        <section class="section hero">
+            <h1>Just For You</h1>
+            <p style="font-style: italic;">Some things are too important not to say.</p>
+        </section>
+
+        <section class="section letter">
+            <h2>My Dearest Kiddo,</h2>
+            <div id="typed-letter"></div>
+        </section>
+
+        <section class="section reasons">
+            <h2>Three of Many Reasons I Like You</h2>
+            <div class="reasons-grid">
+                <details>
+                    <summary>1. Your incredible kindness.</summary>
+                    <div class="reason-content">
+                        <p>You have the biggest heart of anyone I know. The way you care for people around you inspires me every single day. You make the world a better place just by being in it.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>2. Your amazing laugh.</summary>
+                    <div class="reason-content">
+                        <p>Seriously, it's the best sound in the world. Hearing you laugh can instantly turn my entire day around. It’s infectious and it’s my absolute favorite song.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>3. The way you make everything an adventure.</summary>
+                    <div class="reason-content">
+                        <p>Whether we're just sitting with you or exploring somewhere new, you make the ordinary feel extraordinary. Life with you, my marshmallow, is never boring, and I wouldn't have it any other way.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="section gallery">
+            <h2>Our Memories</h2>
+            <p>Thinking of these moments always makes me smile.</p>
+            <div class="photo-grid">
+                <!-- ========================================================================================= -->
+                <!-- INSTRUCTIONS: Replace the placeholder links below with links to your own photos.          -->
+                <!-- Use a free service like https://imgbb.com/ or https://postimages.org/ to upload photos and get links. -->
+                <!-- ========================================================================================= -->
+                <div class="photo-item">
+  <img src="assets/photo1.jpg" alt="A shared memory">
+</div>
+<div class="photo-item">
+  <img src="assets/photo2.png" alt="Another good time">
+</div>
+<div class="photo-item">
+  <img src="assets/photo3.jpeg" alt="A special moment">
+</div>
+            </div>
+        </section>
+
+        <section class="section promise">
+            <h2>What I'm Looking Forward To</h2>
+            <ul class="promise-list">
+                 <!-- =================================================================================== -->
+                 <!-- INSTRUCTIONS: Edit these to make them your own and more personal.                 -->
+                 <!-- =================================================================================== -->
+                <li>Countless more late-night talks.</li>
+                <li>Stealing your fries when you're not looking.</li>
+                <li>Making you laugh until you cry.</li>
+                <li>Building a future filled with even more amazing memories.</li>
+                <li>Loving you more and more each day.</li>
+            </ul>
+        </section>
+
+        <section class="section final-plea">
+            <span class="heart">❤</span>
+            <h2>You're My Favorite Person</h2>
+            <p>With all my love,</p>
+             <!-- ====================================================== -->
+             <!-- INSTRUCTIONS: This is already set to Ankit for you.      -->
+             <!-- ====================================================== -->
+            <p style="font-weight: 600; margin-top: 0.5rem; font-size: 1.2rem;">- Ankit</p>
+        </section>
+    </main>
+    
+    <div class="modal" id="photo-modal">
+        <span class="modal-close" id="modal-close">&times;</span>
+        <img src="" alt="Enlarged memory" id="modal-image">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const cover = document.getElementById('cover');
+            const mainContent = document.getElementById('main-content');
+            const openLetterBtn = document.getElementById('open-letter-btn');
+            
+            openLetterBtn.addEventListener('click', () => {
+                cover.style.opacity = '0';
+                cover.style.visibility = 'hidden';
+                mainContent.classList.add('visible');
+
+                // Start observing sections only after letter is opened
+                const animatedElements = document.querySelectorAll('.section');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            if (entry.target.classList.contains('letter')) {
+                                setTimeout(typeWriter, 1000); // Delay typing
+                            }
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+                animatedElements.forEach(el => observer.observe(el));
+            });
+
+            // --- Typing Letter Effect ---
+            const letterElement = document.getElementById('typed-letter');
+            const letterText = `Just a little reminder of how much you mean to me.\n\nThere isn't a moment that goes by where I don't think about you. You've brought so much joy and laughter into my life, and I can't imagine a single day without it. The thought of your smile is what gets me through everything.\n\nYou are my everything, my marshmallow, the best part of my day, and my favorite person in the world. I feel like the luckiest person just to know you.\n\nPlease know that I cherish every single moment we spend together.`;
+            let i = 0;
+            const cursorSpan = document.createElement('span');
+            cursorSpan.className = 'typing-cursor';
+            letterElement.appendChild(cursorSpan);
+
+            function typeWriter() {
+                if (i < letterText.length) {
+                    letterElement.insertBefore(document.createTextNode(letterText.charAt(i)), cursorSpan);
+                    i++;
+                    setTimeout(typeWriter, 45); // Typing speed
+                }
+            }
+            
+            // --- Photo Gallery Modal ---
+            const modal = document.getElementById('photo-modal');
+            const modalImage = document.getElementById('modal-image');
+            const photoItems = document.querySelectorAll('.photo-item');
+            
+            photoItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    modalImage.src = item.querySelector('img').src;
+                    modal.classList.add('open');
+                });
+            });
+            
+            const closeTheModal = () => modal.classList.remove('open');
+            modal.addEventListener('click', (e) => { if (e.target !== modalImage) closeTheModal(); });
+
+            // --- Audio Player ---
+            const audio = document.getElementById('background-music');
+            const audioControl = document.getElementById('audio-control');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+
+            if(audio.src && audio.src !== window.location.href) {
+                audioControl.addEventListener('click', () => {
+                    if (audio.paused) {
+                        audio.play();
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'block';
+                    } else {
+                        audio.pause();
+                        playIcon.style.display = 'block';
+                        pauseIcon.style.display = 'none';
+                    }
+                });
+            } else {
+                audioControl.style.display = 'none'; // Hide button if no music src
+            }
+        });
+    </script>
+</body>
+</html>
+
